@@ -1,0 +1,28 @@
+package com.myspace.rcm;
+
+rule "Retract Errors"
+	dialect "mvel"
+	ruleflow-group "resetErrors"
+	when
+		errors : ValidationError()
+	then
+		//ValidationError fact0 = new ValidationError();
+		//fact0.setError( "user is null" );
+		//insert( fact0 );
+		System.out.println("Executed Rule: " + drools.getRule().getName() );
+		retract(errors);
+end
+
+rule "Retract rfi"
+	dialect "mvel"
+	ruleflow-group "resetErrors"
+	when
+		rfi : RequestForInfo()
+	then
+		//ValidationError fact0 = new ValidationError();
+		//fact0.setError( "user is null" );
+		//insert( fact0 );
+		System.out.println("Executed Rule: " + drools.getRule().getName() );
+		retract(rfi);
+end
+
